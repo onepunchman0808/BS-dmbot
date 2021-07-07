@@ -1,6 +1,5 @@
 
-# 봉순#6959 : MASS DM BOT SOURCE
-
+# 봉순#1234
 
 import discord
 import asyncio
@@ -8,30 +7,33 @@ import datetime
 
 client = discord.Client()
 
+__TOKEN__ = '★봇토큰★'
+titlke = '★임베드 제목 입력★'
+
 @client.event
 async def on_ready():
-    print("봇이 정상적으로 실행되었습니다.")
-    game = discord.Game('★~하는중에 표시될 네임 작성★')
-    await client.change_presence(status=discord.Status.online, activity=game)
+    print(client.user)
+    #game = discord.Game('상태메시지')
+    #await client.change_presence(status=discord.Status.online, activity=game)
 
-#/dm {할말}로 전체DM 전송
+#!디엠 {할말}
 @client.event
 async def on_message(message):
-    if message.content.startswith('/dm'):
+    if message.content.startswith('!디엠'):
         for i in message.guild.members:
-            if i.bot == True:
+            if i.bot:
                 pass
             else:
                 try:
                     msg = message.content[4:]
-                    #메시지 관리권한이 있을시 사용가능
+                    #메시지 관리권한 여부
                     if message.author.guild_permissions.manage_messages:
-                        embed = discord.Embed(color=0x1DDB16, timestamp=message.created_at)
-                        embed.add_field(name="★★제목★★", value=msg, inline=True)
-                        embed.set_footer(text="★맨 밑에 들어갈 내용★")
+                        embed = discord.Embed(title=tile, description=msg, colour=discord.Colour.gold(), timestamp=message.created_at)
+                        #embed.set_footer(text="맨 밑에 들어갈 내용")
                         await i.send(embed=embed)
+                        print(f'{i} 전송')
                 except:
                     pass
 
 
-client.run('★★봇토큰★★')
+client.run(__TOKEN__)
