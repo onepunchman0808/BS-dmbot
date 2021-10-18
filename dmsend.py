@@ -1,6 +1,3 @@
-
-# 봉순#1234
-
 import discord
 import asyncio
 import datetime
@@ -26,7 +23,6 @@ async def on_message(message):
             else:
                 try:
                     msg = message.content[4:]
-                    #메시지 관리권한 여부
                     if message.author.guild_permissions.manage_messages:
                         embed = discord.Embed(title=tile, description=msg, colour=discord.Colour.gold(), timestamp=message.created_at)
                         #embed.set_footer(text="맨 밑에 들어갈 내용")
