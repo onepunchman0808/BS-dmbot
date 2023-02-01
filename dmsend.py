@@ -4,8 +4,8 @@ import datetime
 
 client = discord.Client()
 
-__TOKEN__ = '★봇토큰★'
-titlke = '★임베드 제목 입력★'
+__TOKEN__ = 'MTA3MDIyNjQyMDc2NjM1MTM5MA.GkmGCJ.kf1Nzep5S7GOgbxDVqbm1uwmr04GEMai9GIbQk'
+titlke = 'test bots'
 
 @client.event
 async def on_ready():
